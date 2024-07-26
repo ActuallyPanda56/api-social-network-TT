@@ -9,7 +9,8 @@ import {
   publicationsUser,
   uploadMedia,
   showMedia,
-  feed 
+  feed,
+  getAllPublications
 } from "../controllers/publications.js";
 import { ensureAuth } from "../middlewares/auth.js";
 import multer from "multer";
@@ -33,6 +34,7 @@ const uploads = multer({storage});
 router.get('/test-publication', testPublication);
 router.post('/new-publication', ensureAuth, savePublication);
 router.get('/show-publication/:id', ensureAuth, showPublication);
+router.get('/publications/:page?', getAllPublications);
 router.delete('/delete-publication/:id', ensureAuth, deletePublication);
 router.get('/publications-user/:id/:page?', ensureAuth, publicationsUser);
 router.post('/upload-media/:id', [ensureAuth, checkEntityExists(Publication, 'id'), uploads.single("file0")], uploadMedia);

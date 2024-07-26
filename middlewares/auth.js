@@ -32,7 +32,7 @@ export const ensureAuth = (req, res, next) => {
     req.user = payload;
 
   } catch (error) {
-    return res.status(404).send({
+    return res.status(410).send({
       status: "error",
       message: "El token no es válido"
     });

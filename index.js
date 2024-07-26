@@ -23,10 +23,11 @@ const puerto = process.env.PORT || 3900;
 
 // Configurar cors: permite que las peticiones se hagan correctamente
 app.use(cors({
-  origin: '*', // Permitir solicitudes desde cualquier origen
+  origin: "*", // Reemplaza con el origen de tu frontend
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Métodos permitidos
   preflightContinue: false,
-  optionsSuccessStatus: 204
+  optionsSuccessStatus: 204,
+  credentials: true // Permitir el envío de credenciales
 }));
 
 // Conversión de datos (body a objetos JS)
